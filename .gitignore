@@ -1,0 +1,17 @@
+/.project
+/.pydevproject
+
+/.idea
+
+/db.sqlite3
+
+/env
+
+/static
+
+*.pyc
+
+.coverage
+htmlcov
+
+Thumbs.db
