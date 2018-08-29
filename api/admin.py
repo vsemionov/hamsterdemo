@@ -6,6 +6,7 @@ from .models import Notebook, Note
 class NotebookAdmin(admin.ModelAdmin):
     pass
 
+
 class NoteAdmin(admin.ModelAdmin):
     pass
 
