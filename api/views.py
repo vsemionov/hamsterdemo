@@ -1,8 +1,12 @@
+import random
 from rest_framework import viewsets, mixins
 
 from .models import Notebook, Note
 from .serializers import NotebookSerializer, NoteSerializer
-from .error import HamsterException
+from .error import HamsterException, HamsterAPIException
+
+
+random.seed()
 
 
 class NotebookViewSet(viewsets.ModelViewSet):
@@ -22,4 +26,4 @@ class ErrorViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
         return self.view_name
 
     def list(self, request, *args, **kwargs):
-        raise HamsterException(555, 'custom_error')
+        raise random.choice((HamsterAPIException(), HamsterException(555, 'custom_error')))

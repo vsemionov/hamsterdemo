@@ -1,7 +1,10 @@
 from rest_framework.views import exception_handler
 from rest_framework.response import Response
-from rest_framework.exceptions import ValidationError, NotFound
+from rest_framework.exceptions import APIException, ValidationError, NotFound
 
+
+class HamsterAPIException(APIException):
+    status_code = 444
 
 class HamsterException(Exception):
     def __init__(self, status, code):
