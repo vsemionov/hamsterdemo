@@ -2,6 +2,7 @@ from rest_framework import viewsets, mixins
 
 from .models import Notebook, Note
 from .serializers import NotebookSerializer, NoteSerializer
+from .error import HamsterException
 
 
 class NotebookViewSet(viewsets.ModelViewSet):
@@ -21,5 +22,4 @@ class ErrorViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
         return self.view_name
 
     def list(self, request, *args, **kwargs):
-        # cause an error
-        return 1 / 0
+        raise HamsterException(555, 'custom_error')
