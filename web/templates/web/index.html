@@ -1,4 +1,5 @@
 {% if notes %}
+    <h1>Latest Notes</h1>
     <ul>
     {% for note in notes %}
         <li><a href="/api/notes/{{ note.id }}/">{{ note.title }}</a></li>
@@ -8,4 +9,6 @@
     <p>No notes are available.</p>
 {% endif %}
 
+<a href="/api/">API</a>
+<p></p>
 <a href="require_auth">link that requires auth</a>

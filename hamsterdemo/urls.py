@@ -17,12 +17,14 @@ from django.conf import settings
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import include, path
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('web/', include('web.urls')),
-    url('^accounts/', include('rest_framework.urls', namespace='rest_framework'))
+    path('accounts/', include('rest_framework.urls', namespace='rest_framework')),
+    path('', RedirectView.as_view(pattern_name='index')),
 ]
 
 if settings.DEBUG:
