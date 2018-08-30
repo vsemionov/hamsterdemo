@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, mixins
 
 from .models import Notebook, Note
 from .serializers import NotebookSerializer, NoteSerializer
@@ -12,3 +12,14 @@ class NotebookViewSet(viewsets.ModelViewSet):
 class NoteViewSet(viewsets.ModelViewSet):
     queryset = Note.objects.all()
     serializer_class = NoteSerializer
+
+
+class ErrorViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    view_name = 'Error'
+
+    def get_view_name(self):
+        return self.view_name
+
+    def list(self, request, *args, **kwargs):
+        # cause an error
+        return 1 / 0
